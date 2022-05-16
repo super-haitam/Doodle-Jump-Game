@@ -1,8 +1,10 @@
 # Doodle Jump Game
 import random
 import pygame
-import sys
+import sys, os
+print(os.getcwd())
 sys.path.append("/game_touches_help")
+print(os.getcwd())
 from game_touches_help.get_game_touches_help_img import CreateImage, get_pygame_img
 pygame.init()
 pygame.font.init()
