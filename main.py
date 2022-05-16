@@ -1,10 +1,8 @@
 # Doodle Jump Game
 import random
 import pygame
-import sys, os
-print(os.getcwd())
+import sys
 sys.path.append("/game_touches_help")
-print(os.getcwd())
 from game_touches_help.get_game_touches_help_img import CreateImage, get_pygame_img
 pygame.init()
 pygame.font.init()
@@ -22,8 +20,8 @@ PSEUDO_WHITE = tuple(random.randint(200, 255) for _ in range(3))
 bg_image = pygame.transform.scale(pygame.image.load("assets/background.png"), (WIDTH, HEIGHT))
 
 # ctrl
-ctrl_move_left = get_pygame_img(CreateImage(PSEUDO_WHITE, {"Move Left": "left"}, font_size=28))
-ctrl_move_right = get_pygame_img(CreateImage(PSEUDO_WHITE, {"Move Right": "right"}, font_size=28))
+ctrl_move_left = get_pygame_img(CreateImage(PSEUDO_WHITE, {"Move Left": "left"}, font_size=27))
+ctrl_move_right = get_pygame_img(CreateImage(PSEUDO_WHITE, {"Move Right": "right"}, font_size=27))
 w = WIDTH/8
 ctrl_move_left = pygame.transform.scale(ctrl_move_left,
                                         (w, w * ctrl_move_left.get_width() / ctrl_move_left.get_height()))
