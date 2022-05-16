@@ -1,6 +1,9 @@
 # Doodle Jump Game
 import random
 import pygame
+import sys
+sys.path.append("/game_touches_help")
+from game_touches_help.get_game_touches_help_img import CreateImage, get_pygame_img
 pygame.init()
 pygame.font.init()
 
@@ -15,6 +18,15 @@ PSEUDO_WHITE = tuple(random.randint(200, 255) for _ in range(3))
 
 # Background image
 bg_image = pygame.transform.scale(pygame.image.load("assets/background.png"), (WIDTH, HEIGHT))
+
+# ctrl
+ctrl_move_left = get_pygame_img(CreateImage(PSEUDO_WHITE, {"Move Left": "left"}, font_size=28))
+ctrl_move_right = get_pygame_img(CreateImage(PSEUDO_WHITE, {"Move Right": "right"}, font_size=28))
+w = WIDTH/8
+ctrl_move_left = pygame.transform.scale(ctrl_move_left,
+                                        (w, w * ctrl_move_left.get_width() / ctrl_move_left.get_height()))
+ctrl_move_right = pygame.transform.scale(ctrl_move_right,
+                                         (w, w * ctrl_move_right.get_width() / ctrl_move_right.get_height()))
 
 
 # Classes
@@ -158,6 +170,10 @@ def draw_choice():
     screen.blit(wlcm_txt, ((WIDTH - wlcm_txt.get_width())/2, HEIGHT/4))
     screen.blit(game_name_txt, ((WIDTH - game_name_txt.get_width())/2, HEIGHT*(11/24)))
     screen.blit(game_txt, ((WIDTH - game_txt.get_width())/2, HEIGHT*(2/3)))
+
+    offset = WIDTH/18
+    screen.blit(ctrl_move_left, (offset, HEIGHT/2.5))
+    screen.blit(ctrl_move_right, (WIDTH - offset - ctrl_move_right.get_width(), HEIGHT/2.5))
 
     pygame.display.flip()
 
